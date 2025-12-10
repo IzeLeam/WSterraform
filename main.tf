@@ -20,6 +20,9 @@ resource "azurerm_storage_account" "sg1" {
     # Allows public access to blobs/containers
     allow_nested_items_to_be_public = true
 
+    # Disable Shared Key authorization
+    shared_access_key_enabled = false
+
     # SAS token expiration policy
     sas_policy {
         expiration_period = "01.00:00:00"
@@ -76,6 +79,9 @@ resource "azurerm_storage_account" "sg2" {
     # Allows public access to blobs/containers
     allow_nested_items_to_be_public = true
     
+    # Disable Shared Key authorization
+    shared_access_key_enabled = false
+
     # SAS token expiration policy
     sas_policy {
         expiration_period = "01.00:00:00"
