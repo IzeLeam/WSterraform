@@ -46,20 +46,16 @@ resource "azurerm_storage_account" "sg1" {
 resource "azurerm_storage_container" "newcontainer1" {
     name               = "container-logo"
     storage_account_id = azurerm_storage_account.sg1.id
-    # Access level: "blob" = anonymous read access to blobs only
-    container_access_type = "blob"
-}
+    # Access level: "private" = no anonymous access
+    container_access_type = "private"
 
-# Enable Storage logging for Blob service
-resource "azurerm_storage_logging" "blob_logging1" {
-    storage_account_id            = azurerm_storage_account.sg1.id
-    storage_service_name          = "blob"
-    retention_policy_enabled      = true
-    retention_policy_days         = 7
-    read                          = true
-    write                         = true
-    delete                        = true
-    version                       = "2.0"
+    blob_properties {
+        delete                = true
+        read                  = true
+        write                 = true
+        version               = "1.0"
+        retention_policy_days = 7
+    }
 }
 
 # Create Private Endpoint for Storage Account sg1
@@ -133,20 +129,16 @@ resource "azurerm_private_endpoint" "sg2_endpoint" {
 resource "azurerm_storage_container" "newcontainer2" {
     name               = "container-logs"
     storage_account_id = azurerm_storage_account.sg2.id
-    # Access level: "blob" = anonymous read access to blobs only
-    container_access_type = "blob"
-}
+    # Access level: "private" = no anonymous access
+    container_access_type = "private"
 
-# Enable Storage logging for Blob service
-resource "azurerm_storage_logging" "blob_logging2" {
-    storage_account_id            = azurerm_storage_account.sg2.id
-    storage_service_name          = "blob"
-    retention_policy_enabled      = true
-    retention_policy_days         = 7
-    read                          = true
-    write                         = true
-    delete                        = true
-    version                       = "2.0"
+    blob_properties {
+        delete                = true
+        read                  = true
+        write                 = true
+        version               = "1.0"
+        retention_policy_days = 7
+    }
 }
 
 # Create MySQL Server
