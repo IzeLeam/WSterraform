@@ -19,6 +19,18 @@ resource "azurerm_storage_account" "sg1" {
 
     # Allows public access to blobs/containers
     allow_nested_items_to_be_public = true
+
+    # SAS token expiration policy
+    sas_policy {
+        expiration_period = "01.00:00:00"
+    }
+
+    # Enable soft-delete for blob recovery
+    blob_properties {
+        delete_retention_policy {
+            days = 7
+        }
+    }
 }
 
 # Create a Blob inside the Storage Account for logo
@@ -58,6 +70,18 @@ resource "azurerm_storage_account" "sg2" {
 
     # Allows public access to blobs/containers
     allow_nested_items_to_be_public = true
+    
+    # SAS token expiration policy
+    sas_policy {
+        expiration_period = "01.00:00:00"
+    }
+
+    # Enable soft-delete for blob recovery
+    blob_properties {
+        delete_retention_policy {
+            days = 7
+        }
+    }
 }
 
 # Create Private Endpoint for Storage Account sg2
