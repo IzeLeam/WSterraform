@@ -29,6 +29,21 @@ resource "azurerm_storage_container" "newcontainer1" {
     container_access_type = "blob"
 }
 
+# Create Private Endpoint for Storage Account sg1
+resource "azurerm_private_endpoint" "sg1_endpoint" {
+    name                = "sg1-private-endpoint"
+    location            = var.location
+    resource_group_name = var.rg_name
+    subnet_id           = var.subnet_id
+
+    private_service_connection {
+        name                           = "sg1-connection"
+        private_connection_resource_id = azurerm_storage_account.sg1.id
+        subresource_names              = ["blob"]
+        is_manual_connection           = false
+    }
+}
+
 # Create Storage Account for security logs
 resource "azurerm_storage_account" "sg2" {
     name                = "team17logs"
@@ -43,6 +58,21 @@ resource "azurerm_storage_account" "sg2" {
 
     # Allows public access to blobs/containers
     allow_nested_items_to_be_public = true
+}
+
+# Create Private Endpoint for Storage Account sg2
+resource "azurerm_private_endpoint" "sg2_endpoint" {
+    name                = "sg2-private-endpoint"
+    location            = var.location
+    resource_group_name = var.rg_name
+    subnet_id           = var.subnet_id
+
+    private_service_connection {
+        name                           = "sg2-connection"
+        private_connection_resource_id = azurerm_storage_account.sg2.id
+        subresource_names              = ["blob"]
+        is_manual_connection           = false
+    }
 }
 
 # Create a Blob inside the Storage Account for logs
