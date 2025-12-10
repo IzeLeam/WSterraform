@@ -13,7 +13,7 @@ variable "subscription_id" {
 # A resource group is a container that holds related Azure resources.
 variable "rg_name" {
     type = string
-    default = "RessourceGroup" #TO BE FILLED
+    default = "sandbox_centralesupelec.team17"
 }
 
 # Define a variable for the Azure region (location) where resources will be deployed.

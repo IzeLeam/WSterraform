@@ -60,7 +60,7 @@ resource "azurerm_mysql_flexible_server" "serverformation1" {
     resource_group_name = var.rg_name
 
     administrator_login    = "adminteam17"          # change and save securely
-    administrator_password = "team17"   # change and save securely
+    administrator_password = "Adminteam17"   # change and save securely
 
     sku_name                  = "B_Standard_B1ms"
     version                   = "8.0.21"
