@@ -25,7 +25,8 @@ resource "azurerm_storage_account" "sg1" {
 
     # SAS token expiration policy
     sas_policy {
-        expiration_period = "01.00:00:00"
+        expiration_period = "90.00:00:00"  # 90 jours
+        expiration_action = "Log"
     }
 
     # Enable soft-delete for blob recovery
@@ -84,7 +85,8 @@ resource "azurerm_storage_account" "sg2" {
 
     # SAS token expiration policy
     sas_policy {
-        expiration_period = "01.00:00:00"
+        expiration_period = "90.00:00:00"  # 90 jours
+        expiration_action = "Log"
     }
 
     # Enable soft-delete for blob recovery
