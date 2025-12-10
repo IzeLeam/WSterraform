@@ -17,6 +17,9 @@ resource "azurerm_storage_account" "sg1" {
     # LRS = Locally Redundant Storage
     account_replication_type = "LRS"
 
+    # Enforce latest TLS version for encryption in transit
+    min_tls_version = "TLS1_2"
+
     # Disable public access to blobs/containers
     allow_nested_items_to_be_public = false
 
@@ -87,6 +90,9 @@ resource "azurerm_storage_account" "sg2" {
     # Replication strategy:
     # LRS = Locally Redundant Storage
     account_replication_type = "LRS"
+
+    # Enforce latest TLS version for encryption in transit
+    min_tls_version = "TLS1_2"
 
     # Disable public access to blobs/containers
     allow_nested_items_to_be_public = false
