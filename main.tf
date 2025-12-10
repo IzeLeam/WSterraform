@@ -171,8 +171,8 @@ resource "azurerm_mysql_flexible_server_firewall_rule" "mysqlfwrule1" {
     name                = "mysqlfwrule1-iac"
     resource_group_name = var.rg_name
     server_name         = azurerm_mysql_flexible_server.serverformation1.name
-    start_ip_address    = "0.0.0.0"
-    end_ip_address      = "255.255.255.255"
+    start_ip_address    = "20.19.254.183"
+    end_ip_address      = "20.19.254.183"
 
     depends_on = [
         azurerm_mysql_flexible_server.serverformation1,
