@@ -31,6 +31,11 @@ resource "azurerm_storage_account" "sg1" {
             days = 7
         }
     }
+
+    # Enable encryption with Customer Managed Key
+    customer_managed_key {
+        key_vault_key_id = var.key_vault_key_id
+    }
 }
 
 # Create a Blob inside the Storage Account for logo
@@ -81,6 +86,11 @@ resource "azurerm_storage_account" "sg2" {
         delete_retention_policy {
             days = 7
         }
+    }
+
+    # Enable encryption with Customer Managed Key
+    customer_managed_key {
+        key_vault_key_id = var.key_vault_key_id
     }
 }
 
