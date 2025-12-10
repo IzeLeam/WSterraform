@@ -61,16 +61,6 @@ resource "azurerm_storage_container" "newcontainer1" {
     # Access level: "private" = no anonymous access
     container_access_type = "private"
 
-    blob_properties {
-        logging {
-            retention_policy_enabled      = true
-            delete                = true
-            read                  = true
-            write                 = true
-            version               = "1.0"
-            retention_policy_days = 7
-        }
-    }
 }
 
 # Create Private Endpoint for Storage Account sg1
@@ -159,16 +149,6 @@ resource "azurerm_storage_container" "newcontainer2" {
     # Access level: "private" = no anonymous access
     container_access_type = "private"
 
-    blob_properties {
-        logging {
-            retention_policy_enabled      = true
-            delete                = true
-            read                  = true
-            write                 = true
-            version               = "1.0"
-            retention_policy_days = 7
-        }
-    }
 }
 
 # Create MySQL Server
