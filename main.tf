@@ -50,11 +50,14 @@ resource "azurerm_storage_container" "newcontainer1" {
     container_access_type = "private"
 
     blob_properties {
-        delete                = true
-        read                  = true
-        write                 = true
-        version               = "1.0"
-        retention_policy_days = 7
+        logging {
+            retention_policy_enabled      = true
+            delete                = true
+            read                  = true
+            write                 = true
+            version               = "1.0"
+            retention_policy_days = 7
+        }
     }
 }
 
@@ -133,11 +136,14 @@ resource "azurerm_storage_container" "newcontainer2" {
     container_access_type = "private"
 
     blob_properties {
-        delete                = true
-        read                  = true
-        write                 = true
-        version               = "1.0"
-        retention_policy_days = 7
+        logging {
+            retention_policy_enabled      = true
+            delete                = true
+            read                  = true
+            write                 = true
+            version               = "1.0"
+            retention_policy_days = 7
+        }
     }
 }
 
