@@ -50,6 +50,18 @@ resource "azurerm_storage_container" "newcontainer1" {
     container_access_type = "blob"
 }
 
+# Enable Storage logging for Blob service
+resource "azurerm_storage_logging" "blob_logging1" {
+    storage_account_id            = azurerm_storage_account.sg1.id
+    storage_service_name          = "blob"
+    retention_policy_enabled      = true
+    retention_policy_days         = 7
+    read                          = true
+    write                         = true
+    delete                        = true
+    version                       = "2.0"
+}
+
 # Create Private Endpoint for Storage Account sg1
 resource "azurerm_private_endpoint" "sg1_endpoint" {
     name                = "sg1-private-endpoint"
@@ -123,6 +135,18 @@ resource "azurerm_storage_container" "newcontainer2" {
     storage_account_id = azurerm_storage_account.sg2.id
     # Access level: "blob" = anonymous read access to blobs only
     container_access_type = "blob"
+}
+
+# Enable Storage logging for Blob service
+resource "azurerm_storage_logging" "blob_logging2" {
+    storage_account_id            = azurerm_storage_account.sg2.id
+    storage_service_name          = "blob"
+    retention_policy_enabled      = true
+    retention_policy_days         = 7
+    read                          = true
+    write                         = true
+    delete                        = true
+    version                       = "2.0"
 }
 
 # Create MySQL Server
