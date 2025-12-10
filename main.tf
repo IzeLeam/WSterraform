@@ -37,6 +37,15 @@ resource "azurerm_storage_account" "sg1" {
         delete_retention_policy {
             days = 7
         }
+
+        logging {
+            retention_policy_enabled      = true
+            delete                = true
+            read                  = true
+            write                 = true
+            version               = "1.0"
+            retention_policy_days = 7
+        }
     }
 
     # Enable encryption with Customer Managed Key
@@ -110,6 +119,15 @@ resource "azurerm_storage_account" "sg2" {
     blob_properties {
         delete_retention_policy {
             days = 7
+        }
+        
+        logging {
+            retention_policy_enabled      = true
+            delete                = true
+            read                  = true
+            write                 = true
+            version               = "1.0"
+            retention_policy_days = 7
         }
     }
 
