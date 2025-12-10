@@ -152,7 +152,7 @@ resource "azurerm_mysql_flexible_server" "serverformation1" {
 
     sku_name                  = "B_Standard_B1ms"
     version                   = "8.0.21"
-    geo_redundant_backup_enabled = false
+    geo_redundant_backup_enabled = true
 
     storage {
         auto_grow_enabled  = false
