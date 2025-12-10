@@ -17,8 +17,8 @@ resource "azurerm_storage_account" "sg1" {
     # LRS = Locally Redundant Storage
     account_replication_type = "LRS"
 
-    # Allows public access to blobs/containers
-    allow_nested_items_to_be_public = true
+    # Disable public access to blobs/containers
+    allow_nested_items_to_be_public = false
 
     # Disable Shared Key authorization
     shared_access_key_enabled = false
@@ -77,8 +77,8 @@ resource "azurerm_storage_account" "sg2" {
     # LRS = Locally Redundant Storage
     account_replication_type = "LRS"
 
-    # Allows public access to blobs/containers
-    allow_nested_items_to_be_public = true
+    # Disable public access to blobs/containers
+    allow_nested_items_to_be_public = false
     
     # Disable Shared Key authorization
     shared_access_key_enabled = false
